@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curiosidades sobre o Espaço</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0b0c2a;
+      color: #fff;
+    }
+    header {
+      background: #1c1f4a;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    main {
+      padding: 20px;
+    }
+    .curiosidade {
+      background: #20224d;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .mensagem {
+      margin: 20px 0;
+      background: #341b3d;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #1c1f4a;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Curiosidades sobre o Espaço</h1>
+    <p>Fatos incríveis sobre o universo</p>
+  </header>
+
+  <main id="conteudo">
+    <!-- Curiosidades -->
+    <div class="curiosidade">O Sol é tão grande que cabem mais de 1 milhão de Terras dentro dele.</div>
+    <div class="curiosidade">Saturno tem anéis feitos de gelo e poeira.</div>
+    <div class="curiosidade">A Lua está se afastando da Terra 3,8 cm por ano.</div>
+
+    <!-- Mensagem injetada pela URL -->
+    <div class="mensagem" id="mensagem"></div>
+  </main>
+
+  <footer>
+    Trabalho escolar - Desenvolvido por [Seu Nome]
+  </footer>
+
+  <script>
+    // VULNERABILIDADE: pega "mensagem" da URL e insere direto no HTML sem sanitizar
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("mensagem");
+    if (msg) {
+      document.getElementById("mensagem").innerHTML = msg;
+    }
+  </script>
+</body>
+</html>
